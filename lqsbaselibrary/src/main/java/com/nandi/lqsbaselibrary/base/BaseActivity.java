@@ -19,15 +19,9 @@ import com.nandi.lqsbaselibrary.utils.SxActivityCollector;
  * Time:15:22
  * author:qingsong
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends BaseHeadActivity {
     //获取TAG的activity名称
     protected final String TAG = this.getClass().getSimpleName();
-    //是否显示标题栏
-    private boolean isShowTitle = false;
-    //是否显示状态栏
-    private boolean isShowStatusBar = true;
-    //是否允许旋转屏幕
-    private boolean isAllowScreenRoate = true;
     //封装Toast对象
     private static Toast toast;
     public Context context;
@@ -39,27 +33,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         //activity管理
         SxActivityCollector.addActivity(this);
         ARouter.getInstance().inject(context);
-        if (!isShowTitle) {
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-        }
-
-        if (isShowStatusBar) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
-                    , WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-
         //设置布局
         setContentView(initLayout());
-        //设置屏幕是否可旋转
-        if (!isAllowScreenRoate) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        } else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+
         //初始化控件
         initView();
         //设置数据
         initData();
+
     }
 
     /**
@@ -78,34 +59,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 设置数据
      */
     protected abstract void initData();
-
-    /**
-     * 设置是否显示标题栏
-     *
-     * @param showTitle true or false
-     */
-    public void setShowTitle(boolean showTitle) {
-        isShowTitle = showTitle;
-    }
-
-    /**
-     * 设置是否显示状态栏
-     *
-     * @param showStatusBar true or false
-     */
-    public void setShowStatusBar(boolean showStatusBar) {
-        isShowStatusBar = showStatusBar;
-    }
-
-    /**
-     * 是否允许屏幕旋转
-     *
-     * @param allowScreenRoate true or false
-     */
-    public void setAllowScreenRoate(boolean allowScreenRoate) {
-        isAllowScreenRoate = allowScreenRoate;
-    }
-
     /**
      * 保证同一按钮在1秒内只会响应一次点击事件
      */
@@ -144,6 +97,18 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param msg 提示信息
      */
     public void showToast(String msg) {
+        if (null == toast) {
+            toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+        } else {
+            toast.setText(msg);
+        }
+        toast.show();
+    }   /**
+     * 显示提示  toast
+     *
+     * @param msg 提示信息
+     */
+    public void showLongToast(String msg) {
         if (null == toast) {
             toast = Toast.makeText(context, msg, Toast.LENGTH_LONG);
         } else {

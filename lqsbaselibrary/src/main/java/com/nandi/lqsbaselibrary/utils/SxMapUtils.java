@@ -16,7 +16,7 @@ import java.util.List;
  * 导航工具类
  */
 
-public class SxMapUtil {
+public class SxMapUtils {
 
     /*意图对象*/
     private static Intent intent;

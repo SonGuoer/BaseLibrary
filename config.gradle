@@ -65,7 +65,7 @@ ext {
             "loadingBall"             : 'com.github.glomadrian:loadingballs:1.1@aar',
             "mvpChart"                : 'com.github.PhilJay:MPAndroidChart:v3.1.0',
             "banner"                  : 'com.youth.banner:banner:1.4.10',
-            "dialogUtil"                  : 'com.github.hss01248:DialogUtil:2.0.2',
+            "dialogUtil"              : 'com.github.hss01248:DialogUtil:2.0.2',
 
             //json
             "gson"                    : 'com.google.code.gson:gson:2.8.5',

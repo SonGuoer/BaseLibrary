@@ -14,12 +14,12 @@ import java.util.List;
  * author:qingsong
  * 权限工具类
  */
-public class SxPermissionsTool {
-    public SxPermissionsTool() {
+public class SxPermissionsUtils {
+    public SxPermissionsUtils() {
     }
 
-    public static SxPermissionsTool.Builder with(Activity activity) {
-        return new SxPermissionsTool.Builder(activity);
+    public static SxPermissionsUtils.Builder with(Activity activity) {
+        return new SxPermissionsUtils.Builder(activity);
     }
 
     public static class Builder {
@@ -31,7 +31,7 @@ public class SxPermissionsTool {
             this.permissionList = new ArrayList();
         }
 
-        public SxPermissionsTool.Builder addPermission(@NonNull String permission) {
+        public SxPermissionsUtils.Builder addPermission(@NonNull String permission) {
             if (!this.permissionList.contains(permission)) {
                 this.permissionList.add(permission);
             }

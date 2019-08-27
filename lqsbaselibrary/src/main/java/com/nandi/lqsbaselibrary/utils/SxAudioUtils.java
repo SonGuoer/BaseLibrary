@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author qingsong
  */
-public class SxAudioTool {
+public class SxAudioUtils {
     public static MediaRecorder mRecorder = null;
     public static MediaPlayer mPlayer = null;
     public static String mFileName;

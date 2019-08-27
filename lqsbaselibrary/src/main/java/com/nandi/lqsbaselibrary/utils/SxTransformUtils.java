@@ -5,7 +5,7 @@ package com.nandi.lqsbaselibrary.utils;
  * 坐标系转换工具类
  */
 
-public class SxTransformUtil {
+public class SxTransformUtils {
 
     private static final double EARTH_RADIUS = 6378137;
     static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
